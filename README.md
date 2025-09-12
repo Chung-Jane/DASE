@@ -26,10 +26,10 @@ https://www.kaggle.com/datasets/supergus/multistage-continuousflow-manufacturing
 ## Analysis
 
 ### 1. SaveFiles.py
-Save the raw data in each of the five storage formats: csv, json, parquet, feather, h5 with basic dataset and large-scale dataset
+Save the raw data in each of the five storage formats: csv, json, parquet, feather, h5 with basic dataset and large-scale dataset.
 
 ### 2. Experiment.py
-Experiment for each dataset type
+Experiment for each dataset type.
 
 ### 3. Plot.py
 - `Data loading time (sec)`
