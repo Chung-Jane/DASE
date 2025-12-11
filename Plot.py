@@ -5,46 +5,40 @@ import seaborn as sns
 import glob
 
 # Repetition (results_test1.csv, results_test2.csv, ...)
-all_files = glob.glob("results_large_revision/results_test*.csv")
+all_files = glob.glob("results_basic/results_test*.csv")
+# all_files = glob.glob("results_large/results_test*.csv")
 df_list = [pd.read_csv(f) for f in all_files]
 results_df = pd.concat(df_list, ignore_index=True)
 
 
-# load_time & max_memory (black)
-# results_df = pd.read_csv('results_test1.csv') 
-
-# metrics = ['load_time', 'max_memory', 'train_time', 'predict_time',
-#            'write_pred_time', 'total_time', 'file_size', 'RMSE']
-
-# plt.figure(figsize=(6, 5))
-# ax = sns.barplot(data=results_df, x='format', y='max_memory', width=0.4, color='black')
-# ax.set_axisbelow(True)
-# plt.xlabel('Data format', fontsize=15)
-# plt.ylabel('Maximum memory usage (MB)', fontsize=15)
-# ax.tick_params(axis='both', labelsize=14)
-# plt.tight_layout()
-# plt.grid()
-# plt.show()
-
-
 # Data loading time
-plt.figure(figsize=(8, 5))
-ax = sns.barplot(data=results_df, x='format', y='load_time', errorbar="se", hue='model')
+plt.figure(figsize=(6, 5))
+ax = sns.barplot(data=results_df, x='format', y='load_time', errorbar="se", width=0.5, color='gray')
 ax.set_axisbelow(True)
 plt.xlabel('Data format', fontsize=15)
 plt.ylabel('Data loading time (sec)', fontsize=15)
 ax.tick_params(axis='both', labelsize=14)
-plt.legend(title='Model', loc='upper right', title_fontsize=13, fontsize=12)
 plt.tight_layout()
 plt.grid()
 plt.show()
 
 # Maximum memory usage
-plt.figure(figsize=(8, 5))
-ax = sns.barplot(data=results_df, x='format', y='max_memory', errorbar="se", hue='model')
+plt.figure(figsize=(6, 5))
+ax = sns.barplot(data=results_df, x='format', y='max_memory', errorbar="se", width=0.5, color='gray')
 ax.set_axisbelow(True)
 plt.xlabel('Data format', fontsize=15)
 plt.ylabel('Maximum memory usage (MB)', fontsize=15)
+ax.tick_params(axis='both', labelsize=14)
+plt.tight_layout()
+plt.grid()
+plt.show()
+
+# CPU utilization
+plt.figure(figsize=(8, 5))
+ax = sns.barplot(data=results_df, x='format', y='cpu_train_avg', errorbar="se", hue='model')
+ax.set_axisbelow(True)
+plt.xlabel('Data format', fontsize=15)
+plt.ylabel('Avg. CPU utilization (%)', fontsize=15)
 ax.tick_params(axis='both', labelsize=14)
 plt.legend(title='Model', loc='upper right', title_fontsize=13, fontsize=12)
 plt.tight_layout()
@@ -86,7 +80,7 @@ plt.legend(title='Model', loc='upper right', title_fontsize=13, fontsize=12)
 plt.tight_layout()
 plt.grid()
 plt.show()
-'''
+
 # Total execution time
 df_list = []
 
@@ -117,7 +111,7 @@ plt.legend(title='Model', loc='upper right', title_fontsize=13, fontsize=12)
 plt.tight_layout()
 plt.grid()
 plt.show()
-'''
+
 # File size 
 plt.figure(figsize=(8, 5))
 ax = sns.barplot(data=results_df, x='format', y='file_size', errorbar="se", hue='model')
