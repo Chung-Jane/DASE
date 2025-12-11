@@ -4,11 +4,11 @@ Data strorage format Analysis for ML System Efficiency
 ## Setup Instructions
 
 ### 1. Create Python virtual environment
-Make sure Python version is **>= 3.7**.
+Make sure Python version is **>= 3.10**.
 
 Using conda:
 ```bash
-conda create -n dase python=3.7
+conda create -n dase python=3.10
 ```
 Activate the created virtual environment:
 ```bash
@@ -17,7 +17,7 @@ conda activate dase
 
 ### 2. Install required libraries
 ```bash
-conda install pandas scikit-learn xgboost os matplotlib seaborn
+conda install pandas scikit-learn xgboost os matplotlib seaborn pyarrow tables
 ```
 
 ### 3. Dataset
@@ -37,6 +37,7 @@ Experiment for each dataset type.
 - `Inference time (sec)`
 - `Write time (sec)`
 - `Total execution time (sec)`
+- `Average CPU utilization rate (%)`
 - `Maximum memory usage (MB)`
 - `File size (KB)`
 - `RMSE`
